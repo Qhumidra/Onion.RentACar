@@ -16,7 +16,7 @@ namespace Onion.RentACar.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
+        [HttpGet("GetList")]
         public async Task<IActionResult> List()
         {
             var result = await _mediator.Send(new GetCarsQueryRequest());
@@ -29,10 +29,12 @@ namespace Onion.RentACar.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+
+
+        [HttpGet("getbycategory")]
+        public async Task<IActionResult> GetByCategory(int id)
         {
-            var result = await _mediator.Send(new GetCarQueryRequest(id));
+            var result = await _mediator.Send(new GetByCategoryQueryRequest(id));
 
             if (result == null)
             {
@@ -42,7 +44,20 @@ namespace Onion.RentACar.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpGet("getbyid")]
+        public async Task<IActionResult> GetByid(int id)
+        {
+            var result = await _mediator.Send(new GetCarByIdQueryRequest(id));
+
+            if (result == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(result);
+        }
+
+        [HttpPost("add")]
         public async Task<IActionResult> Create(CreateCarCommandRequest request)
         {
             var result = await _mediator.Send(request);
@@ -50,7 +65,7 @@ namespace Onion.RentACar.API.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPost("update")]
         public async Task<IActionResult> Update(UpdateCarCommandRequest request)
         {
             var result = await _mediator.Send(request);

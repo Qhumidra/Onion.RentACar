@@ -42,5 +42,30 @@ namespace Onion.RentACar.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost("updateUser")]
+        public async Task<IActionResult> UpdateUser(UpdateUserCommandRequest request)
+        {
+            var result = await _mediator.Send(request);
+
+            if (result == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(result);
+        }
+
+        [HttpGet("getbyname")]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            var result = await _mediator.Send(new GetUserByNameQueryRequest(name));
+
+            if (result == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(result);
+        }      
     }
 }

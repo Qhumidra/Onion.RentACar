@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using Onion.RentACar.Application.Caching;
 using Onion.RentACar.Application.Features.CQRS.Commands.CarCommands;
 using Onion.RentACar.Application.Interfaces;
 using Onion.RentACar.Application.Tools.Caching;
+using Onion.RentACar.Application.Utilities.Caching;
 
 namespace Onion.RentACar.Application.Features.CQRS.Handlers.CarHandlers
 {

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using MediatR;
-using Onion.RentACar.Application.Caching;
 using Onion.RentACar.Application.Dtos;
 using Onion.RentACar.Application.Enums;
 using Onion.RentACar.Application.Features.CQRS.Queries.CarQueries;
 using Onion.RentACar.Application.Interfaces;
 using Onion.RentACar.Application.Tools.Caching;
+using Onion.RentACar.Application.Utilities.Caching;
 
 namespace Onion.RentACar.Application.Features.CQRS.Handlers.CarHandlers
 {
@@ -26,11 +26,11 @@ namespace Onion.RentACar.Application.Features.CQRS.Handlers.CarHandlers
             var cacheIsExist = CacheTool.IsExist("cars", _cache);
 
             if (cacheIsExist)
-                return _mapper.Map<List<CarListDto>>(CacheTool.GetCache("cars", _cache));
+                return  _mapper.Map<List<CarListDto>>(CacheTool.GetCache("cars", _cache));
 
 
 
-            var data = await _carDal.GetAllAsync();
+            var data = await _carDal.GetList();
 
 
 

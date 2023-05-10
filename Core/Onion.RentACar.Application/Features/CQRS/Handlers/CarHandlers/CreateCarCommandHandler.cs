@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using MediatR;
-using Onion.RentACar.Application.Caching;
 using Onion.RentACar.Application.Dtos;
 using Onion.RentACar.Application.Features.CQRS.Commands.CarCommands;
 using Onion.RentACar.Application.Interfaces;
 using Onion.RentACar.Application.Tools.Caching;
+using Onion.RentACar.Application.Tools.JWT;
 using Onion.RentACar.Application.Tools.Validation;
-using Onion.RentACar.Application.ValidationRules.FluentValidation;
+using Onion.RentACar.Application.Utilities.Caching;
+using Onion.RentACar.Application.Utilities.ValidationRules.FluentValidation;
 using Onion.RentACar.Domain.Entities;
 
 namespace Onion.RentACar.Application.Features.CQRS.Handlers.CarHandlers
@@ -26,6 +27,8 @@ namespace Onion.RentACar.Application.Features.CQRS.Handlers.CarHandlers
 
         public async Task<CarCreatedDto?> Handle(CreateCarCommandRequest request, CancellationToken cancellationToken)
         {
+            SecuredOperation.Role("Admin,Employee");
+
             var car = _mapper.Map<Car>(request);
 
 

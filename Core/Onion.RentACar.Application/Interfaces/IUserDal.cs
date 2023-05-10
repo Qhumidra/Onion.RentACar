@@ -1,4 +1,5 @@
-﻿using Onion.RentACar.Domain.Entities;
+﻿using Onion.RentACar.Application.Dtos;
+using Onion.RentACar.Domain.Entities;
 
 namespace Onion.RentACar.Application.Interfaces
 {

@@ -11,6 +11,9 @@ namespace Onion.RentACar.Persistence
 
             services.AddScoped<ICarDal, CarDal>();
             services.AddScoped<IUserDal, UserDal>();
+            services.AddScoped<IRentListDal, RentListDal>();
+            services.AddScoped<ICategoryDal, CategoryDal>();
+            services.AddScoped<IStatusDal, StatusDal>();
         }
     }
 }

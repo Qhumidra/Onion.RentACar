@@ -1,4 +1,4 @@
-﻿using Onion.RentACar.Application.Caching;
+﻿using Onion.RentACar.Application.Utilities.Caching;
 
 namespace Onion.RentACar.Application.Tools.Caching
 {

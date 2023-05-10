@@ -16,4 +16,8 @@
     <ProjectReference Include="..\..\Infrastructure\Onion.RentACar.Persistence\Onion.RentACar.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>

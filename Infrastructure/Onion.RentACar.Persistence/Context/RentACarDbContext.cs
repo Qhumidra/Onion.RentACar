@@ -14,5 +14,8 @@ namespace Onion.RentACar.Persistence.Context
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<AppUserRole> AppUserRoles { get; set; }
+        public DbSet<RentList> RentList { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Status> Status { get; set; }
     }
 }
