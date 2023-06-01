@@ -20,6 +20,7 @@ namespace Onion.RentACar.Persistence.Repositories
                              on rentList.StatusId equals status.Id
                              select new RentListDto
                              {
+                                 Id = rentList.Id,
                                  Name = user.Name,
                                  Surname = user.Surname,
                                  Brand = car.Brand,
@@ -50,6 +51,7 @@ namespace Onion.RentACar.Persistence.Repositories
                              where rentList.StatusId == id
                              select new RentListDto
                              {
+                                 Id = rentList.Id,
                                  Name = user.Name,
                                  Surname = user.Surname,
                                  Brand = car.Brand,

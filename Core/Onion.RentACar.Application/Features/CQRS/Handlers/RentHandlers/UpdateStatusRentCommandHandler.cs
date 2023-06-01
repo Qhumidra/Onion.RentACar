@@ -7,18 +7,18 @@ using Onion.RentACar.Application.Utilities.Caching;
 
 namespace Onion.RentACar.Application.Features.CQRS.Handlers.RentHandlers
 {
-    public class UpdateRentCommandHandler : IRequestHandler<UpdateRentCommandRequest>
+    public class UpdateStatusRentCommandHandler : IRequestHandler<UpdateStatusRentCommandRequest>
     {
         private readonly IRentListDal _rent;
         private readonly ICacheManager _cache;
 
-        public UpdateRentCommandHandler(IRentListDal rent, ICacheManager cache)
+        public UpdateStatusRentCommandHandler(IRentListDal rent, ICacheManager cache)
         {
             _rent = rent;
             _cache = cache;
         }
 
-        public async Task<Unit> Handle(UpdateRentCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateStatusRentCommandRequest request, CancellationToken cancellationToken)
         {
             SecuredOperation.Role("Admin,Employee,Customer");
 
@@ -28,12 +28,6 @@ namespace Onion.RentACar.Application.Features.CQRS.Handlers.RentHandlers
             {
                 CacheTool.RemoveCache("rentList", _cache);
 
-                updatedData.CarId = request.CarId;
-                updatedData.AppUserId = request.AppUserId;
-                updatedData.PaymentType = request.PaymentType;
-                updatedData.Price = request.Price;
-                updatedData.IssueDate = request.IssueDate;
-                updatedData.PurchaseDate = request.PurchaseDate;
                 updatedData.StatusId = request.StatusId;
 
                 await _rent.UpdateAsync(updatedData);

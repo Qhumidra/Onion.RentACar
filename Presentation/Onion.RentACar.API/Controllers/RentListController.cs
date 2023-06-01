@@ -53,5 +53,13 @@ namespace Onion.RentACar.API.Controllers
 
             return Ok(data);
         }
+
+        [HttpPost("updateStatus")]
+        public async Task<IActionResult> UpdateStatus(UpdateStatusRentCommandRequest request)
+        {
+            var data = await _mediator.Send(request);
+
+            return Ok(data);
+        }
     }
 }
